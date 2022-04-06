@@ -1,6 +1,6 @@
 ---
 metadata:
-  name: "Ensure subnet is associated with NSG"  
+  name: "Ensure subnet is associated with NSG"
   id: "BC_AZ_C_002"
   guidelines: |
     Every subnet should be associated with NSG for controlling access to 
@@ -8,19 +8,18 @@ metadata:
   category: "networking"
   severity: "high"
 scope:
-  provider: "azure" 
+  provider: "azure"
 definition:
   and:
-  - cond_type: "connection"
-    resource_types:
-    - "azurerm_subnet_network_security_group_association"
-    connected_resource_types: 
-    - "azurerm_subnet"
-    - "azurerm_network_security_group"
-    operator: "exists"
-  - cond_type: "filter"
-    attribute: "resource_type"
-    value:
-    - "azurerm_subnet"
-    operator: "within"
-
+    - cond_type: "connection"
+      resource_types:
+        - "azurerm_subnet_network_security_group_association"
+      connected_resource_types:
+        - "azurerm_subnet"
+        - "azurerm_network_security_group"
+      operator: "exists"
+    - cond_type: "filter"
+      attribute: "resource_type"
+      value:
+        - "azurerm_subnet"
+      operator: "within"
